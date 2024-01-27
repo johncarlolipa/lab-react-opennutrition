@@ -1,0 +1,24 @@
+/* FoodBox.css */
+.food-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+}
+
+  .food-box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .food-box div {
+    flex-grow: 1;
+  }
+
+  .food-box h2 {
+    margin: 0; 
+  }
