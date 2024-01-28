@@ -4,12 +4,13 @@ import './App.css';
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 import FoodSearch from './components/Search';
-import { Row, Col } from 'antd';
+import { Row, Col, Button } from 'antd';
 import foods from './foods.json';
 
 function App() {
   const [foodList, setFoodList] = useState(foods);
   const [filteredFoodList, setFilteredFoodList] = useState(foods);
+  const [isFormVisible, setIsFormVisible] = useState(true);
 
   const handleAddFood = (newFood) => {
     setFoodList((prevFoodList) => [...prevFoodList, newFood]);
@@ -29,9 +30,17 @@ function App() {
     setFilteredFoodList(updatedFoodList);
   };
 
+  const toggleFormVisibility = () => {
+    setIsFormVisible((prevIsFormVisible) => !prevIsFormVisible);
+  };
+
   return (
     <div className="App">
-      <AddFoodForm onAddFood={handleAddFood} />
+      <Button onClick={toggleFormVisibility} style={{ marginBottom: '10px' }}>
+        {isFormVisible ? 'Hide Form' : 'Add New Food'}
+      </Button>
+
+      {isFormVisible && <AddFoodForm onAddFood={handleAddFood} />}
       <FoodSearch onSearch={handleSearch} />
 
       <Row gutter={16}>
